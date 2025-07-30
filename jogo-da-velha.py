@@ -2,6 +2,7 @@
 
 # Criando um tabuleiro
 tabuleiro = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+jogador_atual = "X"
 
 def mostrar_tabuleiro(tabuleiro):
     for i in tabuleiro:
@@ -9,7 +10,12 @@ def mostrar_tabuleiro(tabuleiro):
             print(" | ",linha, end=" ")
         print(" | ")
 
-jogador_atual = "X"
+# JOGADORES
+def mostrar_jogador_atual(jogador_atual):
+    if jogador_atual == "X":
+        print("Jogador X")
+    else:
+        print("Jogador O")
 
 # VALIDANDO A JOGADA
 def validando_jogada(jogada):
@@ -18,8 +24,9 @@ def validando_jogada(jogada):
     else:
         print("Jogada inválida")
 
-mostrar_tabuleiro(tabuleiro)
-
-# Jogando
-
-validando_jogada(jogada = int(input("Digite um número de 1 a 9 correspondente ao tabuleiro: ")))
+# JOGANDO
+while True:
+    mostrar_tabuleiro(tabuleiro)
+    mostrar_jogador_atual(jogador_atual)
+    validando_jogada(jogada = int(input("Digite um número de 1 a 9 correspondente ao tabuleiro: ")))
+    break
