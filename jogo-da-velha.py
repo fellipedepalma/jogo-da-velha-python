@@ -10,7 +10,9 @@ def mostrar_tabuleiro(tabuleiro):
     for i in tabuleiro:
         for linha in i:
             print(" | ",linha, end=" ")
+        
         print(" | ")
+        print(" | --- + --- + --- | ")
 
 # JOGADORES
 def mostrar_jogador_atual(jogador_atual):
