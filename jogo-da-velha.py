@@ -22,7 +22,7 @@ def mostrar_jogador_atual(jogador_atual):
 # VALIDANDO A ENTRADA DA JOGADA
 def validando_entrada_jogada(jogada):
     if jogada in range(1, 10):
-        return True
+        return jogada
     else:
         print("Jogada inválida")
         return False
@@ -40,6 +40,7 @@ def atualiza_tabuleiro(tabuleiro, jogada_atual, jogador_atual):
         for coluna in range(3):
             if tabuleiro[linha][coluna] == jogada_atual:
                 tabuleiro[linha][coluna] = jogador_atual
+                print(f"Jogada Atual: {jogada_atual}, Jogador Atual: {jogador_atual} ")
     
 
 # JOGANDO
