@@ -1,32 +1,28 @@
 # Jogo da Velha em Python 🕹️
 
-Este é um projeto simples do jogo da velha (tic-tac-toe), feito em terminal, como parte do meu aprendizado da linguagem Python.
+Este é meu primeiro projeto pessoal após retomar os estudos em programação. 
+Comecei com um clássico: o jogo da velha (tic-tac-toe) — implementado no terminal usando Python puro.
 
 
 ## 🚀 Objetivo
 
-Praticar lógica de programação, estruturas de repetição, listas e funções.
-
-
-## 📚 O que estou aprendendo com este projeto:
-
-- Manipulação de listas em Python
-- Estruturas condicionais (`if`, `else`)
-- Loops (`while`)
+Reforçar fundamentos como:
+- Estruturas de controle (`if`, `while`)
+- Manipulação de listas
 - Funções
-- Organização de código
-- Pensamento lógico (algoritmo passo a passo)
+- Lógica de programação
+- Pensamento estruturado (algoritmo passo a passo)
 
 
-## 🤖 Ajuda no desenvolvimento
+## 📚 Como estou aprendendo
 
-Estou contando com o auxílio do ChatGPT (apelidado de "Jarvis") ~~já que não tenho mentor~~, para me orientar com pseudocódigos e explicações lógicas — **sem código pronto**. 
-A ideia é aprender de verdade, escrevendo eu mesmo o código e melhorando com feedback.
+Sou autodidata, estou praticando diariamente e me guiando por pseudocódigos com ajuda do ChatGPT, sem copiar códigos prontos — a ideia é aprender de verdade.
 
 
 ## 🧩 Como funciona
 
-O jogo roda no terminal, entre dois jogadores humanos. Um símbolo é `X`, outro é `O`. 
+O jogo roda no terminal, entre dois jogadores humanos. 
+Um símbolo é `X`, outro é `O`. 
 O jogador escolhe a posição (1 a 9), e o jogo verifica vitória ou empate a cada rodada.
 
 
@@ -35,5 +31,11 @@ O jogador escolhe a posição (1 a 9), e o jogo verifica vitória ou empate a ca
 - Melhorar a verificação de entradas inválidas
 - Permitir jogar contra o computador
 - Interface gráfica (quem sabe no futuro!)
+
+
+## 🔗 Me acompanhe também no LinkedIn
+
+Compartilho minha evolução por lá:
+➡️ [linkedin.com/in/fellipedepalma](https://linkedin.com/in/fellipedepalma)
 
 ---
