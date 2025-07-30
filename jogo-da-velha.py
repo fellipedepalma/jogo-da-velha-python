@@ -40,8 +40,11 @@ def atualiza_tabuleiro(tabuleiro, jogada_atual, jogador_atual):
         for coluna in range(3):
             if tabuleiro[linha][coluna] == jogada_atual:
                 tabuleiro[linha][coluna] = jogador_atual
+<<<<<<< HEAD
                 print(f"Jogada Atual: {jogada_atual}, Jogador Atual: {jogador_atual} ")
     
+=======
+>>>>>>> 8174f485eb983f47b98f1a04505fa75fa3ae6a6f
 
 # JOGANDO
 while jogadas_feitas < 9:
@@ -59,4 +62,3 @@ while jogadas_feitas < 9:
 
     jogador_atual = 'O' if jogador_atual == 'X' else 'X'
     jogadas_feitas += 1
-    
