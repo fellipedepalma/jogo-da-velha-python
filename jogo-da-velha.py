@@ -9,6 +9,17 @@ def mostrar_tabuleiro(tabuleiro):
             print(" | ",linha, end=" ")
         print(" | ")
 
+jogador_atual = "X"
+
+# VALIDANDO A JOGADA
+def validando_jogada(jogada):
+    if jogada in range(1, 10):
+        return True
+    else:
+        print("Jogada inválida")
+
 mostrar_tabuleiro(tabuleiro)
 
-jogador_atual = "X"
+# Jogando
+
+validando_jogada(jogada = int(input("Digite um número de 1 a 9 correspondente ao tabuleiro: ")))
