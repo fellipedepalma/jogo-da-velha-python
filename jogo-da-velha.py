@@ -31,8 +31,10 @@ def valida_entrada_jogada(jogada):
 # VERIFICANDO SE POSIÇÃO ESTÁ OCUPADA
 def posicao_livre(tabuleiro, jogada):
     for linha in tabuleiro:
-        if jogada == linha:
-            return True
+        for coluna in linha:
+            if jogada == coluna:
+                return True
+    print("JOGADA POSIÇÃO JÁ PREENCHIDA")
     return False
 
 # ATUALIZANDO O TABULEIRO
@@ -43,23 +45,20 @@ def atualiza_tabuleiro(tabuleiro, jogada_atual, jogador_atual):
                 tabuleiro[linha][coluna] = jogador_atual
 
 # JOGANDO
-while jogadas_feitas < 9:
+while jogadas_feitas <= 9:
     print("=======================================")
     print(f"JOGO DA VELHA - JOGADA ATUAL:  {jogadas_feitas + 1}")
     print("=======================================")
 
-    mostrar_jogador_atual(jogador_atual)
-
     mostrar_tabuleiro(tabuleiro)
     
+    mostrar_jogador_atual(jogador_atual)
+    
     jogada_atual = valida_entrada_jogada(int(input("Digite um número de 1 a 9 correspondente ao tabuleiro: ")))
-    print(jogada_atual)
 
     esta_livre = posicao_livre(tabuleiro, jogada_atual)
 
-    print(esta_livre)
-
-    if esta_livre:
+    if esta_livre and jogada_atual:  
         atualiza_tabuleiro(tabuleiro, jogada_atual, jogador_atual)
 
         jogador_atual = 'O' if jogador_atual == 'X' else 'X'
