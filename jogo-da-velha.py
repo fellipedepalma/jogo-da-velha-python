@@ -44,6 +44,7 @@ def posicao_livre(tabuleiro, jogada):
             if jogada == numero:
                 return jogada
     print(">> ESCOLHA OUTRO NUMERO <<")
+    return False
 
 # FUNÇÃO PARA ATUALIZAR O TABULEIRO COM A JOGADA ATUAL
 # Substituir a posição escolhida pelo jogador pela letra correspondente ("X" ou "O").
@@ -54,18 +55,32 @@ def atualiza_tabuleiro(tabuleiro, jogada, jogador):
                 tabuleiro[linha][coluna] = jogador
 
 # FUNÇÃO PARA ATUALIZAR JOGADOR
-def atualizar_jogador():
-    return 'O' if jogador_atual == 'X' else 'X'
+def atualizar_jogador(jogador):
+    return 'O' if jogador == 'X' else 'X'
 
 while contador_de_jogadas <= 9:
-
     print(f"JOGADA: {contador_de_jogadas}")
     mostrar_tabuleiro(tabuleiro)
     mostrar_jogador_atual(jogador_atual)
-    jogada_atual = valida_intervalo_entrada_jogada(int(input("Digite um número de 1 e 9: ")))
-    jogada_atual = posicao_livre(tabuleiro, jogada_atual)
 
-    if jogada_atual:
-        atualiza_tabuleiro(tabuleiro, jogada_atual, jogador_atual)
-        jogador_atual = atualizar_jogador()
-        contador_de_jogadas += 1 
+    while True:
+        try:
+            jogada_atual = input("Digite um número de 1 e 9: ")
+            jogada_atual = int(jogada_atual)
+        except ValueError as error:
+            print(">> DIGITE UM VALOR VÁLIDO <<")
+            continue # PARA REPETIR O LOOP NA NOVA TENTATIVA
+        
+        jogada_atual = valida_intervalo_entrada_jogada(jogada_atual)
+        if not jogada_atual:
+            continue # NÚMERO FORA DO INTERVALO
+
+        jogada_atual = posicao_livre(tabuleiro, jogada_atual)
+        if not jogada_atual:
+            continue # POSIÇÃO ESTÁ OCUPADA
+
+        break # PARA SAIR DO LOOP INTERNO E ATUALIZAR O TABULEIRO
+
+    atualiza_tabuleiro(tabuleiro, jogada_atual, jogador_atual)
+    jogador_atual = atualizar_jogador(jogador_atual)
+    contador_de_jogadas += 1 
