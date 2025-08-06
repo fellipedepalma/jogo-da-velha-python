@@ -1,67 +1,71 @@
-# JOGO DA VELHA EM PYTHON POR UM INICIANTE
+# JOGO DA VELHA POR UM INICIANTE EM PYTHON
 
-# CRIANDO UM TABULEIRO E JOGADOR ATUAL
+# VARIÁVEIS PRINCIPAIS
 tabuleiro = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 jogador_atual = "X"
-jogadas_feitas = 0
+contador_de_jogadas = 1
 
-# MOSTRANDO O TABULEIRO 
-def mostrar_tabuleiro(tabuleiro):
-    for i in tabuleiro:
-        for linha in i:
-            print(" | ",linha, end=" ") 
+
+# FUNÇÃO MOSTRAR TABULEIRO
+# Mostrar tabuleiro de forma clara e visual.
+# Idealmente, sem repetição de código, e com separadores ortganizados.
+def mostrar_tabuleiro(tab):
+    for linha in tab:
+        for coluna in linha:
+            print(" | ", coluna, end=" ")
         print(" | ")
         print(" | --- + --- + --- | ")
 
-# JOGADORES
-def mostrar_jogador_atual(jogador_atual):
-    if jogador_atual == "X":
-        print("JOGADOR X")
-    else:
-        print("JOGADOR O")
 
-# VALIDANDO A ENTRADA DA JOGADA
-def valida_entrada_jogada(jogada):
-    if jogada in range(1, 10):
-        return jogada
+# FUNÇÃO MOSTRAR JOGADOR ATUAL
+# Exibe qual jogador fará a jogada atual.
+def mostrar_jogador_atual(jogador):
+    if jogador == "X":
+        print ("JOGADOR X")
     else:
-        print("JOGADA INVÁLIDA")
+        print ("JOGADOR O")
+
+
+# FUNÇÃO PARA VALIDAR INTERVALO ENTRADA DO USUARIO
+# Verifica se a entrada é um número inteiro entre 1 e 9.
+def valida_intervalo_entrada_jogada(input_usuario):
+    if input_usuario in range(1, 10):
+        return input_usuario
+    else:
+        print(">> NÚMERO FORA DO INTERVALO <<")
         return False
 
-# VERIFICANDO SE POSIÇÃO ESTÁ OCUPADA
+
+# FUNÇÃO PARA VERIFICAR SE O NUMERO DIGITADO ESTÁ LIVRE
+# Verifica se o número informado pelo jogador ainda existe no tabuleiro (ou seja, se não foi substituido por "X" ou "O")
 def posicao_livre(tabuleiro, jogada):
     for linha in tabuleiro:
-        for coluna in linha:
-            if jogada == coluna:
-                return True
-    print("JOGADA POSIÇÃO JÁ PREENCHIDA")
-    return False
+        for numero in linha:
+            if jogada == numero:
+                return jogada
+    print(">> ESCOLHA OUTRO NUMERO <<")
 
-# ATUALIZANDO O TABULEIRO
-def atualiza_tabuleiro(tabuleiro, jogada_atual, jogador_atual):
+# FUNÇÃO PARA ATUALIZAR O TABULEIRO COM A JOGADA ATUAL
+# Substituir a posição escolhida pelo jogador pela letra correspondente ("X" ou "O").
+def atualiza_tabuleiro(tabuleiro, jogada, jogador):
     for linha in range(3):
         for coluna in range(3):
-            if tabuleiro[linha][coluna] == jogada_atual:
-                tabuleiro[linha][coluna] = jogador_atual
+            if tabuleiro[linha][coluna] == jogada:
+                tabuleiro[linha][coluna] = jogador
 
-# JOGANDO
-while jogadas_feitas <= 9:
-    print("=======================================")
-    print(f"JOGO DA VELHA - JOGADA ATUAL:  {jogadas_feitas + 1}")
-    print("=======================================")
+# FUNÇÃO PARA ATUALIZAR JOGADOR
+def atualizar_jogador():
+    return 'O' if jogador_atual == 'X' else 'X'
 
+while contador_de_jogadas <= 9:
+
+    print(f"JOGADA: {contador_de_jogadas}")
     mostrar_tabuleiro(tabuleiro)
-    
     mostrar_jogador_atual(jogador_atual)
-    
-    jogada_atual = valida_entrada_jogada(int(input("Digite um número de 1 a 9 correspondente ao tabuleiro: ")))
+    jogada_atual = valida_intervalo_entrada_jogada(int(input("Digite um número de 1 e 9: ")))
+    jogada_atual = posicao_livre(tabuleiro, jogada_atual)
 
-    esta_livre = posicao_livre(tabuleiro, jogada_atual)
-
-    if esta_livre and jogada_atual:  
+    if jogada_atual:
         atualiza_tabuleiro(tabuleiro, jogada_atual, jogador_atual)
-
-        jogador_atual = 'O' if jogador_atual == 'X' else 'X'
-        jogadas_feitas += 1
-    else:
-        print("FAÇA UMA JOGA VÁLIDA!")
+        jogador_atual = atualizar_jogador()
+        contador_de_jogadas += 1 
